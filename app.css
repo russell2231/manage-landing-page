@@ -100,9 +100,9 @@ p {
   height: 100%;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 100;
+  /* right: 0;
+  bottom: 0; */
+  z-index: 5;
 }
 
 .overlay.active {
@@ -129,6 +129,7 @@ header.active .header-nav {
   position: fixed;
   background-color: #fff;
   width: 85%;
+  max-width: 800px;
   z-index: 100;
   top: 120px;
   padding: 2rem 0;
@@ -159,6 +160,15 @@ header .nav-toggle {
   width: 25px;
   height: 20px;
   border: none;
+  cursor: pointer;
+}
+
+header .nav-toggle:focus {
+  outline: none;
+}
+
+header.active .start {
+  z-index: 10;
 }
 
 header.active .nav-toggle {
@@ -340,6 +350,7 @@ footer .container {
 .form {
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .form input {
@@ -348,14 +359,34 @@ footer .container {
   width: 90%;
   margin-right: 0.5rem;
   border: none;
+  color: var(--secondary-color);
 }
 
 .form input:focus {
   outline: none;
 }
 
+.form.error input {
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
 .form .getstarted {
   width: auto;
+}
+
+.form .error-msg {
+  display: none;
+  color: var(--primary-color);
+  font-style: italic;
+  position: absolute;
+  left: 20px;
+  bottom: -20px;
+  font-size: 12px;
+}
+
+.form.error .error-msg {
+  display: initial;
 }
 
 .footer-nav {
@@ -602,10 +633,19 @@ footer .container {
     margin: 1rem 0;
   }
 
+  .main-footer-nav a:hover,
+  .secondary-footer-nav a:hover {
+    color: var(--primary-color);
+  }
+
   .form {
     margin-top: -5%;
     width: 30%;
     align-items: center;
+  }
+
+  .form .error-msg {
+    bottom: 75px;
   }
 
   .copyright {
