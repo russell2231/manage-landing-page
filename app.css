@@ -605,8 +605,8 @@ footer .container {
 
   .copyright {
     position: absolute;
-    bottom: -20%;
     right: 0;
+    left: unset;
     text-align: right;
     margin: 0;
   }
